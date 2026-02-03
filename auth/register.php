@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Registration succesful";
 
     } else {
-        echo "Eroor: email already exists";
+        echo "Error: email already exists";
     }
 
    
