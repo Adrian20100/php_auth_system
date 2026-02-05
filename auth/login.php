@@ -1,4 +1,8 @@
 <?php
+
+ini_set('session.cookie_httponly', 1);
+ini_set('session.use_only_cookie', 1);
+
 session_start();
 require_once "/xampp/htdocs/auth-system/config/db.php";
 
@@ -30,6 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Invalid credentials";
     }
 
+    session_start();
+    session_regenerate_id(true);
+    $_SESSION['user_id'] = $user['id'];
 }
 
 ?>

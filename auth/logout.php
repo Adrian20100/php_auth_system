@@ -1,8 +1,11 @@
 <?php
 session_start();
-session_destroy();
+
+$_SESSION = []; // Remove all session variables
+
+session_destroy(); // destroy the session
 
 
-header("Location: login.php");
+header("Location: login.php"); // redirect to login
 exit;
 ?>
