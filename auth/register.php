@@ -1,5 +1,9 @@
 <?php
-require_once "/xampp/htdocs/auth-system/config/db.php";
+//Relative path to jump out of 'auth' and into 'config'
+require_once "../config/db.php";
+
+$message = "";
+$messageClass = "";
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $username = trim($_POST["username"]);
@@ -14,10 +18,12 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $stmt->bind_param("sss", $username, $email, $hashedPassword);
 
     if ($stmt->execute()) {
-        echo "Registration succesful";
+        $message = "Registration succesfull! You can now log in.";
+        $messageClass = "success-green"; //Matches a CSS color we defined
 
     } else {
-        echo "Error: email already exists";
+        $message = "Error: this email is already registered.";
+        $messageClass = "error-red"; 
     }
 
    
@@ -29,29 +35,36 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Create Account</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <h2>Create an account</h2>
+    <div class="container">
+        <h2>Create an account</h2>
 
-    <form method="POST" action="">
-        <label>
-            Username:
-            <input type="text" name="username" required>
-        </label><br><br>
+        <?php if($message):?>
+            <div class="message" style="color: white; background-color: var(--<?php echo $messageClass;?>); padding: 10px; border-radius: 4px; margin-bottom: 10px;">
+                <?php echo $message; ?>
+            </div>
+            <?php endif; ?>
 
-        <label>
-            Email:
-            <input type="text" name="email" required>
-        </label><br><br>
+        <form method="POST" action="">
+            <label>Username:</label>
+                <input type="text" name="username" placeholder="Choose a username" required>
+         
 
-        <label>
-            Password:
-            <input type="password" name="password" required>
-        </label><br><br>
+            <label>Email:</label>
+                <input type="text" name="email" placeholder="email@example.com" required>
+            
 
-        <button type="submit">Register</button>
-    </form>
+            <label>Password:</label>
+                <input type="password" name="password" placeholder="Min. 8 characters" required>
+            
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
     
+    <script src="../script.js"></script>
 </body>
 </html>
