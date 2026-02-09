@@ -1,9 +1,9 @@
 :root {
-  --primary-color: #4a90e2;
+  --primary-color: #b6b6b6;
   --bg-color: #f4f7f6;
   --text-color: #333;
   --error-red: #e74c3c;
-  --succes-green: #2ecc71;
+  --success-green: #2ecc71;
 }
 
 body {
@@ -30,7 +30,7 @@ input {
   width: 100%;
   padding: 10px;
   background-color: var(--primary-color);
-  color: white;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 4px;
   cursor: pointer;

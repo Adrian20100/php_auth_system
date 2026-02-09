@@ -54,19 +54,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <form method="POST" action="">
-        <label>
-            Email:
-            <input type="email" name="email" required>
-        </label><br><br>
+    <div class="container">
+        <form method="POST" action="">
+            <label>
+                Email:
+                <input type="email" name="email" required>
+            </label><br><br>
 
-        <label>
-            Password:
-            <input type="password" name="password" required>
-        </label><br><br>
+            <label>
+                Password:
+                <input type="password" name="password" required>
+            </label><br><br>
 
-        <button type="submit">Login</button>
-    </form>
-    
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 </html>

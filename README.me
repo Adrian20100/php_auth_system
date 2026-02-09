@@ -1,0 +1,73 @@
+PHP Authentication & Role Management System
+A secure, lightweight authentication system built with PHP and MySQL. Features include secure password hashing, session management, and role-based access control.
+
+Features
+Secure Registration: Passwords are encrypted using password_hash().
+
+Safe Login: Uses Prepared Statements to prevent SQL Injection.
+
+Session Security: Implements session_regenerate_id and httponly cookies.
+
+Role-Based Access: Distinguishes between user and admin roles.
+
+Modern UI: Clean, industrial design with a #b6b6b6 primary color theme.
+
+Responsive Design: Works on both desktop and mobile.
+
+Installation & Setup
+
+1. Database Configuration
+   Open phpMyAdmin.
+
+Create a new database named auth_system.
+
+Run the following SQL to create the users table:
+
+CREATE TABLE users (
+id INT AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(50) NOT NULL,
+email VARCHAR(100) NOT NULL UNIQUE,
+password VARCHAR(255) NOT NULL,
+role ENUM('user', 'admin') DEFAULT 'user',
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+2. File Setup
+   Move the project folder to your local server directory (e.g., C:/xampp/htdocs/auth-system/).
+
+Update config/db.php with your database credentials if they differ from the defaults:
+
+Host: localhost
+
+User: root
+
+Password: ""
+
+auth-system/
+├── auth/
+│ ├── login.php # User authentication logic
+│ ├── logout.php # Secure session destruction
+│ └── register.php # New account creation
+├── config/
+│ └── db.php # Database connection (MySQLi)
+├── dashboard.php # Protected user area
+├── index.php # Landing page
+├── script.js # Frontend interactivity (Password toggle)
+├── style.css # Custom industrial-style UI
+└── README.md # You are here!
+
+Security Highlights
+Password Hashing: Uses PASSWORD_DEFAULT (bcrypt) for industry-standard encryption.
+
+XSS Prevention: All user-rendered data is escaped using htmlspecialchars().
+
+Session Fixation: New session IDs are generated upon successful login.
+
+Prepared Statements: Prevents malicious SQL input.
+
+Future Roadmap
+[ ] Implement "Forgot Password" with token-based reset.
+
+[ ] Add Profile Picture uploads.
+
+[ ] Create an Admin-only User Management dashboard.

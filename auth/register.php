@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     if ($stmt->execute()) {
         $message = "Registration succesfull! You can now log in.";
-        $messageClass = "success-green"; //Matches a CSS color we defined
+        $messageClass = "success-green"; //Matches a CSS color I defined
 
     } else {
         $message = "Error: this email is already registered.";
